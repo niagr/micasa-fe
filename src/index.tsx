@@ -1,4 +1,8 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
+import {Button} from 'semantic-ui-react'
 
-ReactDOM.render(<div>Hey</div>, document.getElementById('app'))
+import 'semantic-ui-css/semantic.min.css'
+
+
+ReactDOM.render(<div><Button>Hey</Button></div>, document.getElementById('app'))

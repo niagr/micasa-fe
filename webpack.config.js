@@ -13,7 +13,9 @@ module.exports = {
   },
   module: {
     rules: [
-      {test: /\.tsx?$/, use: 'awesome-typescript-loader'}
+      {test: /\.tsx?$/, use: 'awesome-typescript-loader'},
+      {test: /\.css$/, use: [ 'style-loader', 'css-loader' ]},
+      {test: /\.(woff|woff2|eot|ttf|otf|png|svg)$/, use: 'file-loader'}
     ]
   },
   plugins: [
