@@ -16,5 +16,8 @@ module.exports = {
       {test: /\.tsx?$/, use: 'awesome-typescript-loader'}
     ]
   },
-  plugins: [new HtmlWebpackPlugin()]
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/index.html'
+    })]
 }
