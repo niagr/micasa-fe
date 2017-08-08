@@ -2,7 +2,7 @@
 
 ## Setup Instructions
 
-Istall project dependencies with:
+Install project dependencies with:
 
 `npm install`
 
