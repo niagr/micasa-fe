@@ -2,10 +2,13 @@ const path = require('path')
 
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
+
+const STATIC_DIR = './static'
+
 module.exports = {
   entry: "./src/index.tsx",
   output: {
-    filename: './static/bundle.js',
+    filename: STATIC_DIR + '/bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
   resolve: {
@@ -31,7 +34,7 @@ module.exports = {
         use: {
           loader: 'file-loader',
           options: {
-            name: './static/[hash].[ext]'
+            name: STATIC_DIR + '/[hash].[ext]'
           }
         }
       }
