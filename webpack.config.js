@@ -2,7 +2,8 @@ const path = require('path')
 
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-
+// All content must go here. All other URL's except './static' will be served index.html
+// react-router takes care of routing to other app URL's 
 const STATIC_DIR = './static'
 
 module.exports = {
