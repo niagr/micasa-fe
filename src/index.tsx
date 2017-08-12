@@ -9,12 +9,18 @@ import MainContainer from './components/MainContainer/MainContainer'
 
 import '!style-loader!css-loader!./index.css'
 
-ReactDOM.render(
+const mainPage = () => <MainContainer/>
+
+const uploadPage = () => <div> <h1>Upload</h1></div>
+
+const rootComponent = (
   <BrowserRouter>
     <div>
       <Link to={'/upload'}>Link</Link>
-      <Route exact path="/" component={MainContainer}/>
-      <Route path="/upload" component={() => <div> <h1>Upload Listing</h1></div>}/>
+      <Route exact path="/" component={mainPage}/>
+      <Route path="/upload" component={uploadPage}/>
     </div>
   </BrowserRouter>
-, document.getElementById('app'))
+)
+
+ReactDOM.render(rootComponent, document.getElementById('app'))

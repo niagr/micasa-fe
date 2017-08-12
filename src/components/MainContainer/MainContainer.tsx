@@ -5,6 +5,7 @@ import * as styles from './MainContainer.css'
 
 import SearchBar from '../SearchBar/SearchBar'
 import SearchResult from '../SearchResult/SearchResult'
+import {API_PROPERTY_URL} from '../../constants'
 
 interface Property {
   name: string;
@@ -27,7 +28,7 @@ export default class MainContainer extends React.Component<any, MainContainerSta
   }
 
   handleSearchChanged = async (text: string) => {
-    const resp = await fetch('http://localhost:5000/api/property?name=' + text)
+    const resp = await fetch(API_PROPERTY_URL + '?name=' + text)
     const results: Property[] = await resp.json()
     this.setState({
       results: results //.map(p => ({title: p.name, description: p.address}))
