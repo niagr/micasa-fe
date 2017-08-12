@@ -1,11 +1,13 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
+import {Link} from 'react-router-dom'
+import {Button} from 'semantic-ui-react'
 
 import * as styles from './MainContainer.css'
 
 import SearchBar from '../SearchBar/SearchBar'
 import SearchResult from '../SearchResult/SearchResult'
-import {API_PROPERTY_URL} from '../../constants'
+import * as ApiService from '../../services/api'
 
 interface Property {
   name: string;
@@ -28,7 +30,7 @@ export default class MainContainer extends React.Component<any, MainContainerSta
   }
 
   handleSearchChanged = async (text: string) => {
-    const resp = await fetch(API_PROPERTY_URL + '?name=' + text)
+    const resp = await ApiService.Property.getForNameOrAddess(text)
     const results: Property[] = await resp.json()
     this.setState({
       results: results //.map(p => ({title: p.name, description: p.address}))
@@ -38,6 +40,11 @@ export default class MainContainer extends React.Component<any, MainContainerSta
   render() {
     return (
       <div className={styles.container}>
+        <Link className={styles.addListingButton} style={{color: 'black'}} to="/upload"> 
+          <Button>
+            Add Listing 
+          </Button>
+        </Link>
         <div className={styles.searchContainer}>
           <SearchBar 
             onSearchChange={this.handleSearchChanged}

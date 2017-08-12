@@ -6,17 +6,17 @@ import {BrowserRouter, Route, Link} from 'react-router-dom'
 import '!style-loader!css-loader!semantic-ui-css/semantic.min.css'
 
 import MainContainer from './components/MainContainer/MainContainer'
+import AddListingForm from './components/AddListingForm/AddListingForm'
 
 import '!style-loader!css-loader!./index.css'
 
 const mainPage = () => <MainContainer/>
 
-const uploadPage = () => <div> <h1>Upload</h1></div>
+const uploadPage = () => <AddListingForm/>
 
 const rootComponent = (
   <BrowserRouter>
     <div>
-      <Link to={'/upload'}>Link</Link>
       <Route exact path="/" component={mainPage}/>
       <Route path="/upload" component={uploadPage}/>
     </div>

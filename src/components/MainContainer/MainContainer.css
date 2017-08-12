@@ -13,3 +13,7 @@
 .resultsContainer {
   margin-top: 100px;
 }
+
+.addListingButton {
+  align-self: flex-end;
+}
