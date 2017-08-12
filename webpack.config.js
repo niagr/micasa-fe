@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
   entry: "./src/index.tsx",
   output: {
-    filename: 'bundle.js',
+    filename: './static/bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
   resolve: {
@@ -26,7 +26,15 @@ module.exports = {
           } 
         ]
       },
-      {test: /\.(woff|woff2|eot|ttf|otf|png|svg)$/, use: 'file-loader'}
+      {
+        test: /\.(woff|woff2|eot|ttf|otf|png|svg)$/, 
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: './static/[hash].[ext]'
+          }
+        }
+      }
     ]
   },
   plugins: [

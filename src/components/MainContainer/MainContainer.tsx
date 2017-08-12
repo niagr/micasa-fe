@@ -3,8 +3,52 @@ import * as ReactDOM from 'react-dom'
 
 import * as styles from './MainContainer.css'
 
-const MainContainer = (props: {children: any}) => (
-  <div className={styles.container}>{props.children}</div>
-);
+import SearchBar from '../SearchBar/SearchBar'
+import SearchResult from '../SearchResult/SearchResult'
 
-export default MainContainer
+interface Property {
+  name: string;
+  address: string
+}
+
+interface MainContainerState {
+  results?: Property[]
+}
+
+export default class MainContainer extends React.Component<any, MainContainerState> {
+
+  constructor(props) {
+    super(props)
+    this.state = {}
+  }
+
+  componentDidMount() {
+    this.handleSearchChanged('')
+  }
+
+  handleSearchChanged = async (text: string) => {
+    const resp = await fetch('http://localhost:5000/api/property?name=' + text)
+    const results: Property[] = await resp.json()
+    this.setState({
+      results: results //.map(p => ({title: p.name, description: p.address}))
+    })
+  }
+
+  render() {
+    return (
+      <div className={styles.container}>
+        <div className={styles.searchContainer}>
+          <SearchBar 
+            onSearchChange={this.handleSearchChanged}
+            dropdown={false}
+          />
+        </div>
+
+        <div className={styles.resultsContainer}>
+          {this.state.results && 
+           this.state.results.map((p, i) => <SearchResult key={p.name+i} title={p.name} desc={p.address} />)}
+        </div>
+      </div>
+    )
+  }
+}

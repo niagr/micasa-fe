@@ -1,0 +1,13 @@
+.mainContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100px;
+  margin-bottom: 50px;
+}
+
+.poster {
+  height: 100%;
+  width: auto;
+  margin-right: 50px;
+}
