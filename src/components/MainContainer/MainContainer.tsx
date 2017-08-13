@@ -5,6 +5,7 @@ import {Button} from 'semantic-ui-react'
 
 import * as styles from './MainContainer.css'
 
+import {routes} from '../../'
 import SearchBar from '../SearchBar/SearchBar'
 import SearchResult from '../SearchResult/SearchResult'
 import * as ApiService from '../../services/api'
@@ -40,7 +41,7 @@ export default class MainContainer extends React.Component<any, MainContainerSta
   render() {
     return (
       <div className={styles.container}>
-        <Link className={styles.addListingButton} style={{color: 'black'}} to="/upload"> 
+        <Link className={styles.addListingButton} style={{color: 'black'}} to={routes.upload.path}> 
           <Button>
             Add Listing 
           </Button>

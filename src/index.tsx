@@ -10,15 +10,16 @@ import AddListingForm from './components/AddListingForm/AddListingForm'
 
 import '!style-loader!css-loader!./index.css'
 
-const mainPage = () => <MainContainer/>
 
-const uploadPage = () => <AddListingForm/>
+export const routes = {
+  'home': {path: '/', component: () => <MainContainer/>},
+  'upload': {path: '/upload', component: () => <AddListingForm/>}
+}
 
 const rootComponent = (
   <BrowserRouter>
     <div>
-      <Route exact path="/" component={mainPage}/>
-      <Route path="/upload" component={uploadPage}/>
+      {Object.values(routes).map(r => <Route exact {...r}/>)}
     </div>
   </BrowserRouter>
 )
