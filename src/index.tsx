@@ -12,14 +12,15 @@ import '!style-loader!css-loader!./index.css'
 
 
 export const routes = {
-  'home': {path: '/', component: () => <MainContainer/>},
-  'upload': {path: '/upload', component: () => <AddListingForm/>}
+  'home': {path: '/', component: MainContainer},
+  'upload': {path: '/upload', component: AddListingForm},
+  '*': {path: '*', component: _ => <div>Fuck off</div>}
 }
 
 const rootComponent = (
   <BrowserRouter>
     <div>
-      {Object.values(routes).map(r => <Route exact {...r}/>)}
+      {Object.values(routes).map(r => <Route key={r.path} exact {...r}/>)}
     </div>
   </BrowserRouter>
 )
