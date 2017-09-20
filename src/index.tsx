@@ -13,8 +13,7 @@ import '!style-loader!css-loader!./index.css'
 
 export const routes = {
   'home': {path: '/', component: MainContainer},
-  'upload': {path: '/upload', component: AddListingForm},
-  '*': {path: '*', component: _ => <div>Fuck off</div>}
+  'upload': {path: '/upload', component: AddListingForm}
 }
 
 const rootComponent = (
