@@ -8,6 +8,7 @@ import * as styles from './MainContainer.css'
 import {routes} from '../../'
 import SearchBar from '../SearchBar/SearchBar'
 import SearchResult from '../SearchResult/SearchResult'
+import MapComponent from '../MapComponent/MapComponent'
 import * as ApiService from '../../services/api'
 
 interface Property {
@@ -41,22 +42,29 @@ export default class MainContainer extends React.Component<any, MainContainerSta
   render() {
     return (
       <div className={styles.container}>
-        <Link className={styles.addListingButton} style={{color: 'black'}} to={routes.upload.path}> 
-          <Button>
-            Add Listing 
-          </Button>
-        </Link>
-        <div className={styles.searchContainer}>
-          <SearchBar 
-            onSearchChange={this.handleSearchChanged}
-            dropdown={false}
-          />
+        <div className={styles.headerSection}>
+          <div className={styles.searchWrapper}>
+            <div className={styles.searchContainer}>
+              <SearchBar
+                onSearchChange={this.handleSearchChanged}
+                dropdown={false}
+              />
+            </div>
+          </div>
+          <Link className={styles.addListingButton} style={{color: 'black'}} to={routes.upload.path}>
+            <Button>
+              Add Listing
+            </Button>
+          </Link>
         </div>
 
-        <div className={styles.resultsContainer}>
-          {this.state.results && 
+        {/* <div className={styles.resultsContainer}>
+          {this.state.results &&
            this.state.results.map((p, i) => <SearchResult key={p.name+i} title={p.name} desc={p.address} />)}
-        </div>
+        </div> */}
+
+        <MapComponent/>
+
       </div>
     )
   }

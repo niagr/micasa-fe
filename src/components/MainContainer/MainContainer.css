@@ -1,13 +1,23 @@
 .container {
-  padding: 50px;
+  /* padding: 10px; */
   display: flex;
   flex-direction: column;
   align-items: stretch;
+  height: 100%;
 }
 
 .searchContainer {
-  width: 50%;
+  width: 100%;
   align-self: center;
+  position: relative;
+  left: -50%;
+}
+
+.searchWrapper {
+  width: 50%;
+  float: left;
+  position: relative;
+  left: 50%
 }
 
 .resultsContainer {
@@ -15,5 +25,10 @@
 }
 
 .addListingButton {
-  align-self: flex-end;
+  float: right;
+  position: relative;
+}
+
+.headerSection {
+  padding: 10px;
 }

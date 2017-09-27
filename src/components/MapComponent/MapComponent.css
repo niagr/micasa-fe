@@ -1,0 +1,9 @@
+
+.containerElement {
+  display: flex;
+  flex: 1;
+}
+
+.mapElement {
+  flex: 1;
+}
