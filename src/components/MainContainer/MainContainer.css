@@ -7,17 +7,8 @@
 }
 
 .searchContainer {
-  width: 100%;
-  align-self: center;
-  position: relative;
-  left: -50%;
-}
-
-.searchWrapper {
   width: 50%;
-  float: left;
-  position: relative;
-  left: 50%
+  align-self: center;
 }
 
 .resultsContainer {
@@ -25,10 +16,26 @@
 }
 
 .addListingButton {
+  color: pink;
   float: right;
-  position: relative;
 }
 
 .headerSection {
   padding: 10px;
+  display: flex;
+  z-index: 1;
+  box-shadow: 0px 0px 10px 0px grey;
+}
+
+.logo {
+  width: 30%;
+  height: auto;
+}
+
+.logoContainer {
+  width: 25%;
+}
+
+.addListingButtonContainer {
+  width: 25%;
 }

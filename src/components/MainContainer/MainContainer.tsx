@@ -4,12 +4,14 @@ import {Link} from 'react-router-dom'
 import {Button} from 'semantic-ui-react'
 
 import * as styles from './MainContainer.css'
+import * as logoImg from '../../assets/img/logo.png'
 
 import {routes} from '../../'
 import SearchBar from '../SearchBar/SearchBar'
 import SearchResult from '../SearchResult/SearchResult'
 import MapComponent from '../MapComponent/MapComponent'
 import * as ApiService from '../../services/api'
+import {BLR_COORD_LAT, BLR_COORD_LNG} from '../../constants'
 
 interface Property {
   name: string;
@@ -43,19 +45,22 @@ export default class MainContainer extends React.Component<any, MainContainerSta
     return (
       <div className={styles.container}>
         <div className={styles.headerSection}>
-          <div className={styles.searchWrapper}>
-            <div className={styles.searchContainer}>
-              <SearchBar
-                onSearchChange={this.handleSearchChanged}
-                dropdown={false}
-              />
-            </div>
+          <div className={styles.logoContainer}>
+            <img className={styles.logo} src={logoImg} />
           </div>
-          <Link className={styles.addListingButton} style={{color: 'black'}} to={routes.upload.path}>
-            <Button>
-              Add Listing
-            </Button>
-          </Link>
+          <div className={styles.searchContainer}>
+            <SearchBar
+              onSearchChange={this.handleSearchChanged}
+              dropdown={false}
+            />
+          </div>
+          <div className={styles.addListingButtonContainer}>
+            <Link className={styles.addListingButton} to={routes.upload.path}>
+              <Button>
+                Add Listing
+              </Button>
+            </Link>
+          </div>
         </div>
 
         {/* <div className={styles.resultsContainer}>
@@ -63,7 +68,10 @@ export default class MainContainer extends React.Component<any, MainContainerSta
            this.state.results.map((p, i) => <SearchResult key={p.name+i} title={p.name} desc={p.address} />)}
         </div> */}
 
-        <MapComponent/>
+        <MapComponent
+          defaultZoom={12}
+          defaultCenter={{lat: BLR_COORD_LAT, lng: BLR_COORD_LNG}}
+        />
 
       </div>
     )
