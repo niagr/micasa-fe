@@ -12,12 +12,16 @@ module.exports = {
     filename: STATIC_DIR + '/bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
+  devtool: 'source-map',
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx']
   },
   module: {
     rules: [
       {test: /\.tsx?$/, use: 'awesome-typescript-loader'},
+      // For integrating TypeScript source maps with Webpack output
+      // Doc: https://www.typescriptlang.org/docs/handbook/react-&-webpack.html
+      {enforce: "pre", test: /\.js$/, loader: "source-map-loader"},
       {
         test: /\.css$/,
         use: [

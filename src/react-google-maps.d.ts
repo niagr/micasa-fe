@@ -7,5 +7,6 @@ declare module 'react-google-maps' {
     GroundOverlay,
     withProps,
     withState,
-    withHandlers
+    withHandlers,
+    Marker
 }

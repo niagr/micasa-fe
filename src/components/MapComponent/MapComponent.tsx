@@ -23,3 +23,4 @@ const MapComponent = compose<any, any>(
 )(props => <GoogleMap {...props}/>)
 
 export default MapComponent
+export {Marker} from 'react-google-maps'

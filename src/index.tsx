@@ -7,14 +7,17 @@ import '!style-loader!css-loader!semantic-ui-css/semantic.min.css'
 
 import MainContainer from './components/MainContainer/MainContainer'
 import AddListingForm from './components/AddListingForm/AddListingForm'
+import {Property} from './services/api'
 
 import '!style-loader!css-loader!./index.css'
 
 
 export const routes = {
-  'home': {path: '/', component: MainContainer},
+  'home': {path: '/', component: () => <MainContainer property={property} />},
   'upload': {path: '/upload', component: AddListingForm}
 }
+
+let property: any|undefined
 
 const rootComponent = (
   <BrowserRouter>
@@ -24,4 +27,11 @@ const rootComponent = (
   </BrowserRouter>
 )
 
-ReactDOM.render(rootComponent, document.getElementById('app'))
+
+async function init () {
+  ReactDOM.render(rootComponent, document.getElementById('app'))
+  // property = await Property.mockProperty()
+  // ReactDOM.render(rootComponent, document.getElementById('app'))  
+}
+
+init()

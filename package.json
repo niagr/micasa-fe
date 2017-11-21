@@ -20,7 +20,8 @@
     "react-router-dom": "^4.1.2",
     "recompose": "^0.25.1",
     "semantic-ui-css": "^2.2.12",
-    "semantic-ui-react": "^0.71.3"
+    "semantic-ui-react": "^0.71.3",
+    "source-map-loader": "^0.2.3"
   },
   "devDependencies": {
     "@types/react": "^16.0.0",

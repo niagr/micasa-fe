@@ -9,17 +9,19 @@ import * as logoImg from '../../assets/img/logo.png'
 import {routes} from '../../'
 import SearchBar from '../SearchBar/SearchBar'
 import SearchResult from '../SearchResult/SearchResult'
-import MapComponent from '../MapComponent/MapComponent'
+import MapComponent, {Marker} from '../MapComponent/MapComponent'
 import * as ApiService from '../../services/api'
 import {BLR_COORD_LAT, BLR_COORD_LNG} from '../../constants'
+import { Property } from '../../models'
 
-interface Property {
-  name: string;
-  address: string
-}
+// interface Property {
+//   name: string;
+//   address: string
+// }
 
 interface MainContainerState {
   results?: Property[]
+  property?: Property
 }
 
 export default class MainContainer extends React.Component<any, MainContainerState> {
@@ -30,7 +32,10 @@ export default class MainContainer extends React.Component<any, MainContainerSta
   }
 
   componentDidMount() {
-    this.handleSearchChanged('')
+    // this.handleSearchChanged('')
+    const property = ApiService.Property.mockProperty().then(property => {
+      this.setState({property})
+    })
   }
 
   handleSearchChanged = async (text: string) => {
@@ -71,7 +76,9 @@ export default class MainContainer extends React.Component<any, MainContainerSta
         <MapComponent
           defaultZoom={12}
           defaultCenter={{lat: BLR_COORD_LAT, lng: BLR_COORD_LNG}}
-        />
+        >
+          <Marker position={this.state.property && this.state.property.coords}/>
+        </MapComponent>
 
       </div>
     )
